@@ -26,6 +26,7 @@ class Window(QtGui.QMainWindow):
 
     def QT_draph(self):
 
+frg
     def update(self):
         t1 = time.clock()
         points = 100        #number of data points
