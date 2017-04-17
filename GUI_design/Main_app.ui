@@ -17,8 +17,8 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>280</y>
+      <x>0</x>
+      <y>400</y>
       <width>531</width>
       <height>391</height>
      </rect>
@@ -99,206 +99,377 @@
     </widget>
     <widget class="QTextBrowser" name="textBrowser_2"/>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QGroupBox" name="PORT_groupbox_1">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>30</y>
-      <width>378</width>
-      <height>234</height>
+      <x>80</x>
+      <y>20</y>
+      <width>262</width>
+      <height>120</height>
      </rect>
     </property>
-    <layout class="QGridLayout" name="gridLayout_3">
-     <item row="0" column="0" rowspan="5">
-      <widget class="QSlider" name="freq_slider_1">
-       <property name="maximum">
-        <number>20000</number>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>COM configuration</string>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
        </property>
-       <property name="singleStep">
-        <number>10</number>
-       </property>
-       <property name="sliderPosition">
-        <number>0</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="tickInterval">
-        <number>3</number>
+       <property name="text">
+        <string>COM</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1" rowspan="2">
-      <widget class="QDial" name="dial"/>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>BAUD</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="lineEdit_2">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_10">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Filename</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="lineEdit_3">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+      </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QProgressBar" name="time_progress">
-       <property name="value">
-        <number>24</number>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="3" rowspan="2">
-      <widget class="QDial" name="dial_2"/>
-     </item>
-     <item row="0" column="4" rowspan="5">
-      <widget class="QSlider" name="freq_slider_2">
-       <property name="maximum">
-        <number>20000</number>
-       </property>
-       <property name="singleStep">
-        <number>10</number>
-       </property>
-       <property name="sliderPosition">
-        <number>0</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="tickInterval">
-        <number>3</number>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2" rowspan="2">
-      <widget class="QPushButton" name="generate_button">
-       <property name="text">
-        <string>GENERATE</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1" rowspan="2">
-      <widget class="QLabel" name="label_7">
+      <widget class="QLineEdit" name="lineEdit">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
         </font>
        </property>
-       <property name="text">
-        <string>Sound 1</string>
-       </property>
       </widget>
-     </item>
-     <item row="3" column="3">
-      <widget class="QLabel" name="label_8">
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sound 2</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1" colspan="3">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="2" column="0">
-        <widget class="QSpinBox" name="amp_spin_1">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Frequency (Hz)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QSpinBox" name="time_dur_spin_1">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLabel" name="label_9">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Duration (s)</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="2">
-        <widget class="QSpinBox" name="time_dur_spin_2">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QSpinBox" name="freq_spin_2">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="maximum">
-          <number>20000</number>
-         </property>
-         <property name="singleStep">
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2" rowspan="2">
-        <widget class="QSpinBox" name="amp_spin_2">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" rowspan="2">
-        <widget class="QSpinBox" name="freq_spin_1">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="maximum">
-          <number>20000</number>
-         </property>
-         <property name="singleStep">
-          <number>10</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" rowspan="2">
-        <widget class="QLabel" name="label_4">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Amplitude</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
+    <zorder>label_10</zorder>
+    <zorder>lineEdit_3</zorder>
+    <zorder>lineEdit_2</zorder>
+    <zorder>label</zorder>
+    <zorder>lineEdit</zorder>
+    <zorder>label_2</zorder>
+    <zorder>label_10</zorder>
+    <zorder>lineEdit_3</zorder>
+    <zorder>lineEdit_2</zorder>
+    <zorder>label</zorder>
+    <zorder>lineEdit</zorder>
+    <zorder>label_2</zorder>
    </widget>
+   <widget class="QGroupBox" name="virtualsound_groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>20</y>
+      <width>391</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Virtual Sound Control Panel</string>
+    </property>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>361</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0" rowspan="3">
+       <widget class="QSlider" name="freq_slider_1">
+        <property name="maximum">
+         <number>20000</number>
+        </property>
+        <property name="singleStep">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="tickInterval">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_7">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="text">
+           <string>Sound 1</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="label_8">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="text">
+           <string>Sound 2</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QDial" name="amp_dial"/>
+        </item>
+        <item row="1" column="1">
+         <widget class="QPushButton" name="generate_button">
+          <property name="text">
+           <string>GENERATE</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QDial" name="amp_dial_2"/>
+        </item>
+       </layout>
+      </item>
+      <item row="0" column="2" rowspan="3">
+       <widget class="QSlider" name="freq_slider_2">
+        <property name="maximum">
+         <number>20000</number>
+        </property>
+        <property name="singleStep">
+         <number>10</number>
+        </property>
+        <property name="sliderPosition">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="tickInterval">
+         <number>3</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QProgressBar" name="time_progress">
+        <property name="value">
+         <number>24</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QSpinBox" name="amp_spin_1">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QSpinBox" name="freq_spin_1">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QSpinBox" name="freq_spin_2">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Amplitude</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QSpinBox" name="amp_spin_2">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QSpinBox" name="dur_spin_1">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLabel" name="label_9">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Duration (s)</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QSpinBox" name="dur_spin_2">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="maximum">
+           <number>20000</number>
+          </property>
+          <property name="singleStep">
+           <number>10</number>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="label_3">
+          <property name="font">
+           <font>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Frequency (Hz)</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <zorder>tabWidget</zorder>
+   <zorder>textEdit</zorder>
+   <zorder>label_6</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>splitter</zorder>
+   <zorder>freq_spin_1</zorder>
+   <zorder>amp_dial</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>amp_dial_2</zorder>
+   <zorder>freq_slider_2</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_9</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>PORT_groupbox_1</zorder>
+   <zorder>virtualsound_groupBox_2</zorder>
+   <zorder>amp_dial</zorder>
+   <zorder></zorder>
+   <zorder>amp_spin_1</zorder>
+   <zorder>dur_spin_1</zorder>
+   <zorder>freq_spin_2</zorder>
+   <zorder>amp_spin_2</zorder>
+   <zorder>dur_spin_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -383,82 +554,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>freq_spin_1</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>freq_slider_1</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>814</x>
-     <y>199</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>687</x>
-     <y>126</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>freq_slider_1</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>freq_spin_1</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>687</x>
-     <y>126</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>814</x>
-     <y>199</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>dial</sender>
-   <signal>dialMoved(int)</signal>
-   <receiver>amp_spin_1</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>724</x>
-     <y>83</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>781</x>
-     <y>221</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>dial_2</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>amp_spin_2</receiver>
-   <slot>update()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>947</x>
-     <y>100</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>929</x>
-     <y>223</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>freq_spin_2</sender>
    <signal>valueChanged(int)</signal>
    <receiver>freq_slider_2</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>957</x>
-     <y>186</y>
+     <x>993</x>
+     <y>192</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1034</x>
-     <y>189</y>
+     <x>1026</x>
+     <y>195</y>
     </hint>
    </hints>
   </connection>
@@ -469,28 +576,108 @@
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1028</x>
-     <y>163</y>
+     <x>1034</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>962</x>
-     <y>187</y>
+     <x>1014</x>
+     <y>196</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>amp_dial</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>amp_spin_1</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>786</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>amp_spin_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>amp_dial_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>966</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>967</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>amp_dial_2</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>amp_spin_2</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>965</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>968</x>
+     <y>227</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>amp_spin_1</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>dial</receiver>
+   <receiver>amp_dial</receiver>
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>774</x>
-     <y>223</y>
+     <x>722</x>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
-     <x>748</x>
-     <y>99</y>
+     <x>726</x>
+     <y>114</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>freq_spin_1</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>freq_slider_1</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>732</x>
+     <y>192</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>698</x>
+     <y>195</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>freq_slider_1</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>freq_spin_1</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>693</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>194</y>
     </hint>
    </hints>
   </connection>
