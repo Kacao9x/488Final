@@ -1,0 +1,2 @@
+- convert .ui to .py
+C:\"Program Files"\WinPython\python2.7amd\Libs\site-packages\PyQt4\pyuic4.bat -x filename.ui-o filename.py
