@@ -17,14 +17,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>400</y>
+      <x>50</x>
+      <y>250</y>
       <width>531</width>
       <height>391</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -187,12 +187,6 @@
     <zorder>label</zorder>
     <zorder>lineEdit</zorder>
     <zorder>label_2</zorder>
-    <zorder>label_10</zorder>
-    <zorder>lineEdit_3</zorder>
-    <zorder>lineEdit_2</zorder>
-    <zorder>label</zorder>
-    <zorder>lineEdit</zorder>
-    <zorder>label_2</zorder>
    </widget>
    <widget class="QGroupBox" name="virtualsound_groupBox_2">
     <property name="geometry">
@@ -211,7 +205,7 @@
     <property name="title">
      <string>Virtual Sound Control Panel</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -410,7 +404,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Duration (s)</string>
+           <string>Duration (ms)</string>
           </property>
          </widget>
         </item>
@@ -446,30 +440,12 @@
      </layout>
     </widget>
    </widget>
-   <zorder>tabWidget</zorder>
    <zorder>textEdit</zorder>
    <zorder>label_6</zorder>
-   <zorder>layoutWidget</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>splitter</zorder>
-   <zorder>freq_spin_1</zorder>
-   <zorder>amp_dial</zorder>
-   <zorder>label_7</zorder>
-   <zorder>label_8</zorder>
-   <zorder>amp_dial_2</zorder>
-   <zorder>freq_slider_2</zorder>
-   <zorder>label_4</zorder>
-   <zorder>label_9</zorder>
-   <zorder>layoutWidget</zorder>
    <zorder>PORT_groupbox_1</zorder>
    <zorder>virtualsound_groupBox_2</zorder>
-   <zorder>amp_dial</zorder>
-   <zorder></zorder>
-   <zorder>amp_spin_1</zorder>
-   <zorder>dur_spin_1</zorder>
-   <zorder>freq_spin_2</zorder>
-   <zorder>amp_spin_2</zorder>
-   <zorder>dur_spin_2</zorder>
+   <zorder>tabWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
