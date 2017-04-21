@@ -371,6 +371,13 @@ class Ui_MainWindow(object):
         self.actionTerminal.setText(_translate("MainWindow", "Terminal", None))
         self.actionGraph.setText(_translate("MainWindow", "Graph", None))
 
+    def file_save(self):
+        name = QtGui.QFiledialog.getSaveFileName(self, 'Save File')
+        file = open(name, 'w')
+        text = self.textEdit.toPlaintext()
+        file.write(text)
+
+
 from matplotlibwidget import MatplotlibWidget
 from pyqtgraph import PlotWidget
 
