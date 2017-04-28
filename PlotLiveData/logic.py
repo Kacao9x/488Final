@@ -7,6 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+import matplotlib.pyplot as plt
+
+import random
+import numpy
+import matplotlib.pyplot as pyplot
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -33,16 +40,20 @@ class Ui_MainWindow(object):
         self.tabWidget.setGeometry(QtCore.QRect(50, 250, 531, 391))
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab = QtGui.QWidget()
-        self.tab.setObjectName(_fromUtf8("tab"))
-        self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab)
-        self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
 
-#########################################################################################
+        #########################################################################################
+        self.tab.setObjectName(_fromUtf8("tab1_polar_plot"))
+        #self.verticalLayout_3 = QtGui.QVBoxLayout(self.tab)
+        #self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
+        layout = QtGui.QVBoxLayout(self.tab1_polar_plot)
         # Plotting the live data from the microphone here.
-        self.matplotlibwidget = MatplotlibWidget(self.tab)
-        self.matplotlibwidget.setObjectName(_fromUtf8("matplotlibwidget"))
+        self.matplotlibwidget = MatplotlibWidget(self.tab, None, "488 Audio Tracking")
+        self.matplotlibwidget.setObjectName(_fromUtf8("plot_polar"))
         self.verticalLayout_3.addWidget(self.matplotlibwidget)
-        self.tabWidget.addTab(self.tab, _fromUtf8(""))
+        self.tabWidget.addTab(self.tab, _fromUtf8("Mapping"))
+
+
+
 
 
         # Graphic View: do the mapping sound here
@@ -371,8 +382,49 @@ class Ui_MainWindow(object):
         self.actionTerminal.setText(_translate("MainWindow", "Terminal", None))
         self.actionGraph.setText(_translate("MainWindow", "Graph", None))
 
+def plot_data(self):
+
+    # a figure instance to plot on
+    self.figure = plt.figure()
+
+    # this is the Canvas Widget that displays the `figure`
+    # it takes the `figure` instance as a parameter to __init__
+    self.canvas = FigureCanvas(self.figure)
+
+    # this is the Navigation widget
+    # it takes the Canvas widget and a parent
+    self.toolbar = NavigationToolbar(self.canvas, self)
+
+    # Just some button connected to `plot` method
+    self.button = QtGui.QPushButton('Plot')
+    self.button.clicked.connect(self.plot)
+
+    # set the layout
+    layout = QtGui.QVBoxLayout()
+    layout.addWidget(self.toolbar)
+    layout.addWidget(self.canvas)
+    layout.addWidget(self.button)
+    self.setLayout(layout)
+
+
+def plot(self):
+    ''' plot some random stuff '''
+    # random data
+    data = [random.random() for i in range(10)]
+
+    # create an axis
+    ax = self.figure.add_subplot(111)
+
+    # discards the old graph
+    ax.hold(False)
+
+    # plot data
+    ax.plot(data, '*-')
+
+    # refresh canvas
+    self.canvas.draw()
+
 """
-		
     def file_save(self):
         name = QtGui.QFiledialog.getSaveFileName(self, 'Save File')
         file = open(name, 'w')
@@ -383,6 +435,28 @@ class Ui_MainWindow(object):
 from matplotlibwidget import MatplotlibWidget
 from pyqtgraph import PlotWidget
 
+
+import numpy
+import matplotlib.pyplot as pyplot
+
+class plot_polar(object):
+    def plot_data(self):
+        ra = [45, 40, 90, -75, 80.2, 102.63]  # angle  --> change to buffer_angle[4000]
+        ra = [x / 180.0 * 3.141593 for x in ra]  # convert angle to radian
+
+        dec = [1.01, 6.05, 5.6, 4.02, 9.1, 7.85]  # distance --> change to buffer_distance[4000]
+
+        fig = pyplot.figure()
+        ax = fig.add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
+        ax.set_ylim(0, 10)
+        ax.set_yticks(numpy.arange(0, 10, 2))
+        ax.scatter(ra, dec, c='r')  # plot the first microphone
+
+        # ax.scatter(rb, dec, c = 'b')                   # plot the second microphone
+        # ax.scatter(rh, dec, c = 'g')                   # plot the human voice
+
+        pyplot.show()
+
 if __name__ == "__main__":
     import sys
     app = QtGui.QApplication(sys.argv)
@@ -390,5 +464,12 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
+
+    #plot = plot_polar()
+    #plot.plot_data()
+
+
+    plot = plot_polar()
+    plot.plot_data()
     sys.exit(app.exec_())
 
