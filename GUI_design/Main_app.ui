@@ -14,54 +14,21 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>250</y>
-      <width>531</width>
-      <height>391</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-     <layout class="QVBoxLayout" name="verticalLayout_3">
-      <item>
-       <widget class="MatplotlibWidget" name="matplotlibwidget"/>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="PlotWidget" name="graphicsView"/>
-      </item>
-     </layout>
-    </widget>
-   </widget>
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>360</y>
+      <x>750</x>
+      <y>340</y>
       <width>251</width>
       <height>61</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="label9_input">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>330</y>
+      <x>750</x>
+      <y>310</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -78,8 +45,8 @@
    <widget class="QSplitter" name="splitter">
     <property name="geometry">
      <rect>
-      <x>640</x>
-      <y>430</y>
+      <x>750</x>
+      <y>410</y>
       <width>256</width>
       <height>211</height>
      </rect>
@@ -87,7 +54,7 @@
     <property name="orientation">
      <enum>Qt::Vertical</enum>
     </property>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="label10_output">
      <property name="font">
       <font>
        <pointsize>12</pointsize>
@@ -102,8 +69,8 @@
    <widget class="QGroupBox" name="PORT_groupbox_1">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>20</y>
+      <x>190</x>
+      <y>50</y>
       <width>262</width>
       <height>120</height>
      </rect>
@@ -118,7 +85,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label1_com">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -130,7 +97,7 @@
       </widget>
      </item>
      <item row="1" column="0" colspan="2">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label2_baud">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -142,7 +109,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lineEdit_baud">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -151,7 +118,7 @@
       </widget>
      </item>
      <item row="2" column="0">
-      <widget class="QLabel" name="label_10">
+      <widget class="QLabel" name="label3_filename">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -163,7 +130,7 @@
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="lineEdit_filename">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -172,7 +139,7 @@
       </widget>
      </item>
      <item row="0" column="2">
-      <widget class="QLineEdit" name="lineEdit">
+      <widget class="QLineEdit" name="lineEdit_com">
        <property name="font">
         <font>
          <pointsize>12</pointsize>
@@ -181,18 +148,18 @@
       </widget>
      </item>
     </layout>
-    <zorder>label_10</zorder>
-    <zorder>lineEdit_3</zorder>
-    <zorder>lineEdit_2</zorder>
-    <zorder>label</zorder>
-    <zorder>lineEdit</zorder>
-    <zorder>label_2</zorder>
+    <zorder>label3_filename</zorder>
+    <zorder>lineEdit_filename</zorder>
+    <zorder>lineEdit_baud</zorder>
+    <zorder>label1_com</zorder>
+    <zorder>lineEdit_com</zorder>
+    <zorder>label2_baud</zorder>
    </widget>
    <widget class="QGroupBox" name="virtualsound_groupBox_2">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>20</y>
+      <x>680</x>
+      <y>40</y>
       <width>391</width>
       <height>261</height>
      </rect>
@@ -237,7 +204,7 @@
       <item row="0" column="1">
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="label4_sound1">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -252,7 +219,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="label5_sound2">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -270,7 +237,7 @@
          <widget class="QDial" name="amp_dial"/>
         </item>
         <item row="1" column="1">
-         <widget class="QPushButton" name="generate_button">
+         <widget class="QPushButton" name="button1_generate">
           <property name="text">
            <string>GENERATE</string>
           </property>
@@ -355,7 +322,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label7_amp">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -397,7 +364,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLabel" name="label_9">
+         <widget class="QLabel" name="label8_duration">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -424,7 +391,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="label6_freq">
           <property name="font">
            <font>
             <pointsize>12</pointsize>
@@ -440,12 +407,29 @@
      </layout>
     </widget>
    </widget>
-   <zorder>textEdit</zorder>
-   <zorder>label_6</zorder>
-   <zorder>splitter</zorder>
-   <zorder>PORT_groupbox_1</zorder>
-   <zorder>virtualsound_groupBox_2</zorder>
-   <zorder>tabWidget</zorder>
+   <widget class="MatplotlibWidget" name="matplotlibwidget">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>210</y>
+      <width>521</width>
+      <height>401</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Button2_Plot">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>620</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Plot</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -478,12 +462,6 @@
    <addaction name="menuSetting"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QDockWidget" name="dockWidget_3">
-   <attribute name="dockWidgetArea">
-    <number>1</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_4"/>
-  </widget>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -520,11 +498,6 @@
    <class>MatplotlibWidget</class>
    <extends>QWidget</extends>
    <header>matplotlibwidget</header>
-  </customwidget>
-  <customwidget>
-   <class>PlotWidget</class>
-   <extends>QGraphicsView</extends>
-   <header>pyqtgraph.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

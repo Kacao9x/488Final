@@ -1,22 +1,69 @@
-import pyqtgraph as pg
+import sys
+from PyQt4 import QtGui
 
-plot = pg.plot()
-plot.setAspectLocked()
+from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
+import matplotlib.pyplot as plt
 
-# Add polar grid lines
-plot.addLine(x=0, pen=0.2)
-plot.addLine(y=0, pen=0.2)
-for r in range(2, 20, 2):
-    circle = pg.QtGui.QGraphicsEllipseItem(-r, -r, r*2, r*2)
-    circle.setPen(pg.mkPen(0.2))
-    plot.addItem(circle)
+import random
 
-# make polar data
-import numpy as np
-theta = np.linspace(0, 2*np.pi, 100)
-radius = np.random.normal(loc=10, size=100)
 
-# Transform to cartesian and plot
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-plot.plot(x, y)
+class Window(QtGui.QDialog):
+    def __init__(self, parent=None):
+        super(Window, self).__init__(parent)
+
+        self.figure = plt.figure()
+        self.canvas = FigureCanvas(self.figure)
+
+        self.toolbar = NavigationToolbar(self.canvas, self)
+        self.toolbar.hide()
+
+        # Just some button
+        self.button = QtGui.QPushButton('Plot')
+        self.button.clicked.connect(self.plot)
+
+        self.button1 = QtGui.QPushButton('Zoom')
+        self.button1.clicked.connect(self.zoom)
+
+        self.button2 = QtGui.QPushButton('Pan')
+        self.button2.clicked.connect(self.pan)
+
+        self.button3 = QtGui.QPushButton('Home')
+        self.button3.clicked.connect(self.home)
+
+        # set the layout
+        layout = QtGui.QVBoxLayout()
+        layout.addWidget(self.toolbar)
+        layout.addWidget(self.canvas)
+        layout.addWidget(self.button)
+        layout.addWidget(self.button1)
+        layout.addWidget(self.button2)
+        layout.addWidget(self.button3)
+        self.setLayout(layout)
+
+    def home(self):
+        self.toolbar.home()
+
+    def zoom(self):
+        self.toolbar.zoom()
+
+    def pan(self):
+        self.toolbar.pan()
+
+    def plot(self):
+        ''' plot some random stuff '''
+        data = [random.random() for i in range(25)]
+        ax = self.figure.add_subplot(111)
+        ax.hold(False)
+        ax.plot(data, '*-')
+        self.canvas.draw()
+
+
+if __name__ == '__main__':
+    app = QtGui.QApplication(sys.argv)
+
+    main = Window()
+    main.setWindowTitle('Simple QTpy and MatplotLib example with Zoom/Pan')
+    main.show()
+
+    sys.exit(app.exec_())
