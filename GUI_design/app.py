@@ -238,7 +238,7 @@ class Ui_MainWindow(object):
         self.Button2_Plot = QtGui.QPushButton(self.centralwidget)
         self.Button2_Plot.setGeometry(QtCore.QRect(350, 620, 75, 23))
         self.Button2_Plot.setObjectName(_fromUtf8("Button2_Plot"))
-        #self.Button2_Plot.clicked.connect(self.plot)
+        self.Button2_Plot.clicked.connect(self.plot)
 
         ############
 
