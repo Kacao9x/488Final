@@ -5,9 +5,12 @@
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
+import csv
+import random
 
 from PyQt4 import QtCore, QtGui
 import matplotlib.pyplot as pyplot
+import numpy
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -227,18 +230,18 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addLayout(self.gridLayout_2, 2, 1, 1, 1)
 
         ### Matplot here
-        self.figure = pyplot.figure()
-        #self.matplotlibwidget = MatplotlibWidget(self.centralwidget)
         self.matplotlibwidget = MatplotlibWidget(self.centralwidget)
         self.matplotlibwidget.setGeometry(QtCore.QRect(130, 210, 521, 401))
         self.matplotlibwidget.setObjectName(_fromUtf8("matplotlibwidget"))
         #self.canvas = FigureCanvas(self.figure)
+        self.matplotlibwidget.draw()        # required to update the windows
+
 
 
         self.Button2_Plot = QtGui.QPushButton(self.centralwidget)
         self.Button2_Plot.setGeometry(QtCore.QRect(350, 620, 75, 23))
         self.Button2_Plot.setObjectName(_fromUtf8("Button2_Plot"))
-        #self.Button2_Plot.clicked.connect(self.plot)
+        self.Button2_Plot.clicked.connect(self.plot)
 
         ############
 
@@ -314,25 +317,46 @@ class Ui_MainWindow(object):
         self.actionGraph.setText(_translate("MainWindow", "Graph", None))
 
     def plot(self):
-        # plot a polar graph here
-        ra = [45, 40, 90, -75, 80.2, 102.63]  # angle  --> change to buffer_angle[4000]
-        ra = [x / 180.0 * 3.141593 for x in ra]  # convert angle to radian
+        #populate the ra
+        #ra =
 
-        dec = [1.01, 6.05, 5.6, 4.02, 9.1, 7.85]  # distance --> change to buffer_distance[4000]
+        # plot a polar graph here
+        ra = [random.randint(-50,100) for i in range(6)]
+        #ra = [45, 40, 90, -75, 80.2, random.randint(0,100)]            # angle  --> change to buffer_angle[4000]
+        ra = [x / 180.0 * 3.141593 for x in ra]             # convert angle to radian
+
+        dec = [1.01, 6.05, 5.6, 4.02, 9.1, 7.85]            # distance --> change to buffer_distance[4000]
 
         fig = pyplot.figure()
         ax = fig.add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
         ax.set_ylim(0, 10)
         ax.set_yticks(numpy.arange(0, 10, 2))
-        ax.scatter(ra, dec, c='r')  # plot the first microphone
+        ax.scatter(ra, dec, c='r')                          # plot the first microphone
 
-        # ax.scatter(rb, dec, c = 'b')                   # plot the second microphone
-        # ax.scatter(rh, dec, c = 'g')                   # plot the human voice
         pyplot.show()
+        #pyplot.draw()
+
+    # open csv file to read the data
+    def __read_csv_file(name=''):
+        print "read the csv file"
+        ra = []
+        distance = []
+        try:
+            with open(name, 'rb') as csvfile:
+                reading = csv.reader(csvfile, delimeter='')
+                for row in reading:
+                    if (row > 4000):
+                        break;
+                    ra.append(row[0])
+                    distance.append(row[1])
+        finally:
+            csvfile.close()
+        return ra
 
 
-
-
+class MatplotlibWidget(QtGui.QWidget):
+    def __init__(self):
+        super
 from matplotlibwidget import MatplotlibWidget
 
 if __name__ == "__main__":
