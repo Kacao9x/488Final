@@ -322,7 +322,7 @@ class Ui_MainWindow(object):
 
         # plot a polar graph here
         ra = [random.randint(-50,100) for i in range(6)]
-        #ra = [45, 40, 90, -75, 80.2, random.randint(0,100)]            # angle  --> change to buffer_angle[4000]
+        #ra = [45, 40, 90, -75, 80.2, 106.7]            # angle  --> change to buffer_angle[4000]
         ra = [x / 180.0 * 3.141593 for x in ra]             # convert angle to radian
 
         dec = [1.01, 6.05, 5.6, 4.02, 9.1, 7.85]            # distance --> change to buffer_distance[4000]

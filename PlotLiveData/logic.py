@@ -346,6 +346,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuSetting.menuAction())
 
+        # establish the connection betwween button and field text
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(1)
         QtCore.QObject.connect(self.freq_spin_2, QtCore.SIGNAL(_fromUtf8("valueChanged(int)")), self.freq_slider_2.setValue)
