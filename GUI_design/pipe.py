@@ -1,4 +1,4 @@
-import subprocess, sys, os, time
+import subprocess, sys, numpy
 import csv
 import itertools
 from PyQt4 import QtGui
@@ -6,6 +6,11 @@ from PyQt4 import QtGui
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
+
+buffer_ra = []  # global variable
+buffer_distance = []
+line = 589
+
 
 #Subprocess's call command with piped output and active shell
 def Call(cmd):
@@ -34,32 +39,6 @@ def __read_txt(name=''):
     print(columns)
 
 
-#open csv file to read the data
-def __read_csv_file(name ='', line = int):
-    print "read the csv file"
-    ra = []
-    distance = []
-    loop_counter = 0
-    try:
-        with open(name, 'rb') as csvfile:
-            reading = csv.reader(csvfile, dialect = 'excel', lineterminator ='\n', delimiter = ',')
-            #next(reading)                               # skip the header
-            for (line, row) in enumerate(reading):
-                if(loop_counter > 10):
-                    break;
-                try:                                    # insert number into the list + CONVERT data type
-                    ra.append(float(row[0]))
-                    distance.append(float(row[1]))
-                    loop_counter += 1
-                except ValueError:
-                    continue
-    finally:
-        csvfile.close()
-    #print ra
-    #print __average_list(ra)
-    return (ra, distance)
-
-
 def __average_list(numbers):
     #return float(sum(numbers)) / max(len(numbers), 1)
     return sum(numbers) / len(numbers)
@@ -78,8 +57,8 @@ def __read_csv_file2(name ='', line = int):
                 if(loop_counter > 10):
                     break;
                 try:                                    # insert number into the list + CONVERT data type
-                    buffer_ra.append(float(row[0]))
-                    buffer_distance.append(float(row[1]))
+                    buffer_ra.append(float(row[1]))
+                    buffer_distance.append(float(row[0]))
                     loop_counter += 1
                     line += 1
                 except ValueError:
@@ -88,10 +67,6 @@ def __read_csv_file2(name ='', line = int):
         csvfile.close()
     #print ra
     #print __average_list(ra)
-
-
-
-
 
 
 # read the data directly from the ssh.
@@ -103,6 +78,7 @@ def _pipe_reading(cmd):
         buffer.append(line.rstrip())
 
 class Window(QtGui.QDialog):
+
     def __init__(self, parent=None):
         super(Window, self).__init__(parent)
 
@@ -129,25 +105,31 @@ class Window(QtGui.QDialog):
         self.setLayout(layout)
 
     # update after 1 clicked
-    def plot(self, line=15):
+    def plot(self):
+        global line
         print "plot", line, buffer_ra, buffer_distance
-        #self.__read_csv_file3("sample_data_for_kacao.csv", line)  # value stored in buffer1, buffer2
-        print "read the csv file"
 
-        # create an axis
-        ax = self.figure.add_subplot(111)
+        self.__read_csv_file3("sample_data_for_kacao.csv")  # value stored in buffer1, buffer2
 
-        # discards the old graph
-        ax.hold(False)
+        ra = self.__average_list3(buffer_ra)
+        distance = self.__average_list3(buffer_distance)
+        ra = ra/ 180.0 * 3.141593
 
-        # plot data
-        ax.plot(buffer_ra, '*-')
+        ax = self.figure.add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
+        ax.set_ylim(0, 3.0)
+        ax.set_yticks(numpy.arange(0, 3.0, 0.4))
+        ax.scatter(ra, distance, c='r')  # plot the first microphone
 
-        # refresh canvas
         self.canvas.draw()
 
-    def __read_csv_file3(name='', line=int):
-        print "read the csv file"
+    def __average_list3(self, numbers):
+        # return float(sum(numbers)) / max(len(numbers), 1)
+        return sum(numbers) / len(numbers)
+
+
+    def __read_csv_file3(self, name=''):
+        global line
+        print "Before read csv Line = ", line
         del buffer_ra[:]
         del buffer_distance[:]
         loop_counter = 0
@@ -159,31 +141,24 @@ class Window(QtGui.QDialog):
                     if (loop_counter > 10):
                         break;
                     try:  # insert number into the list + CONVERT data type
-                        buffer_ra.append(float(row[0]))
-                        buffer_distance.append(float(row[1]))
+                        buffer_ra.append(float(row[1]))
+                        buffer_distance.append(float(row[0]))
                         loop_counter += 1
                         line += 1
                     except ValueError:
                         continue
         finally:
             csvfile.close()
-        print buffer_ra
+
+        print "After all =", line
+        print "\n"
 
 if __name__ == '__main__':
-    buffer_ra = []  # global variable
-    buffer_distance = []
-    line = 15
 
     app = QtGui.QApplication(sys.argv)
     main = Window()
     main.show()
 
     #__read_csv_file2("sample_data_for_kacao.csv", line)     # value stored in buffer1, buffer2
-    print ("MAIN reading buffer_ra ")
-    print buffer_ra
-
-    __read_csv_file2("sample_data_for_kacao.csv", 15)
-    print "Main", line
-
-
+    #print "Main", line
     sys.exit(app.exec_())

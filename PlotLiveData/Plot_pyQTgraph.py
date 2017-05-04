@@ -1,4 +1,4 @@
-import sys
+import sys, numpy
 from PyQt4 import QtGui
 
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
@@ -51,13 +51,26 @@ class Window(QtGui.QDialog):
         self.toolbar.pan()
 
     def plot(self):
-        ''' plot some random stuff '''
-        data = [random.random() for i in range(25)]
-        ax = self.figure.add_subplot(111)
-        ax.hold(False)
-        ax.plot(data, '*-')
-        self.canvas.draw()
+        ''' DO NOT CHANGE. Original sample '''
+        #data = [random.random() for i in range(25)]
+        #ax = self.figure.add_subplot(111)      # create an axis
+        #ax.hold(False)                         # discards the old graph
+        #ax.plot(data, '*-')                    # plot data
+        #self.canvas.draw()                     # refresh canvas
 
+
+
+        ra = [45, 40, 90, -75, 80.2, 102.63]        # angle  --> change to buffer_angle[4000]
+        ra = [x / 180.0 * 3.141593 for x in ra]     # convert angle to radian
+        dec = [1.01, 6.05, 5.6, 4.02, 9.1, 7.85]    # distance --> change to buffer_distance[4000]
+
+        ax = self.figure.add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
+
+        ax.set_ylim(0, 10)
+        ax.set_yticks(numpy.arange(0, 10, 2))
+        ax.scatter(ra, dec, c='r')                  # plot the first microphone
+
+        self.canvas.draw()
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
