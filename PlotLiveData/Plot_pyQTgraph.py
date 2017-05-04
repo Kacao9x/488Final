@@ -66,8 +66,8 @@ class Window(QtGui.QDialog):
 
         ax = self.figure.add_axes([0.1, 0.1, 0.8, 0.8], polar=True)
 
-        ax.set_ylim(0, 10)
-        ax.set_yticks(numpy.arange(0, 10, 2))
+        ax.set_ylim(0, 10.0)
+        ax.set_yticks(numpy.arange(0, 6, 2))
         ax.scatter(ra, dec, c='r')                  # plot the first microphone
 
         self.canvas.draw()
