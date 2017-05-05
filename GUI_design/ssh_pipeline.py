@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 BUFFER_SIZE = 2
 buffer_angle = []           # global variable
 buffer_distance = []
-filename = "ka_cow.csv"
+filename = "sample_data_for_kacao.csv"
 
 buffer_angle__1 = []        # temp var
 buffer_distance_1 = []      # temp var
@@ -54,7 +54,7 @@ def __scan_microphone():
 
 
 class Window(QtGui.QDialog):
-
+    # set up the frame for the software
     def __init__(self, parent=None):
         super(Window, self).__init__(parent)
 
@@ -100,7 +100,7 @@ class Window(QtGui.QDialog):
                 for row in itertools.islice(reading, line, line + BUFFER_SIZE):
                     if (loop_counter > BUFFER_SIZE):
                         break;
-                    try:  # insert number into the list + CONVERT data type
+                    try:                                      # insert number into the list + CONVERT data type
                         buffer_angle.append(float(row[1]))
                         buffer_distance.append(float(row[0]))
                         loop_counter += 1
@@ -113,11 +113,12 @@ class Window(QtGui.QDialog):
         print "After all =", line
         print "\n"
 
+
     # plot the data from the CSV file sample
     def plot_csv(self):
         global line
         print "plot", line, buffer_angle, buffer_distance
-        self.__read_csv_file("ka_cow.csv")  # value stored in buffer1, buffer2
+        self.__read_csv_file(filename)                              # value stored in buffer1, buffer2
 
         angle = self.__average_list(buffer_angle)
         angle = angle / 180.0 * 3.141593
@@ -128,11 +129,11 @@ class Window(QtGui.QDialog):
         #ax.hold(False)                                              # discards the old graph
         ax.grid(True)
         ax.spines['polar'].set_visible(False)
-        ax.set_theta_zero_location('N')  # 0 degree in the north
+        ax.set_theta_zero_location('N')                             # 0 degree in the north
         # ax.set_rlim(0,3.2)
         ax.set_ylim(0, 10.1)
         ax.set_yticks(numpy.arange(0, 12.0, 1.0))
-        ax.scatter(angle, distance, c='r', s=100)  # plot the first microphone
+        ax.scatter(angle, distance, c='r', s=100)                   # plot the first microphone
 
         self.canvas.draw()
 
@@ -159,7 +160,6 @@ class Window(QtGui.QDialog):
             ax.scatter(angle, distance, c='r', s = 100)                     # plot the first microphone
 
             self.canvas.draw()
-
 
 
     # set up the serial connection
@@ -201,10 +201,6 @@ if __name__ == '__main__':
     main.show()
     sys.exit(app.exec_())
 
-    #while True:
-    #    __scan_microphone()
-
-
 
 
 #Subprocess's Popen command with piped output and active shell
@@ -217,15 +213,3 @@ def PopenIter(cmd):
     return subprocess.Popen(cmd, stdout=subprocess.PIPE,
                             shell=True).stdout.readline
 
-"""
-with open("test.txt", "wb") as output_file:
-    csv_out = csv.writer(output_file, delimiter=',', dialect='excel-tab')
-    csv_out.writerow("date","zenith","elevation","azimuth","conv_elevation")
-
-    ser=serial.Serial(port=3, baudrate=9600, timeout=60)
-    ser.open()
-    for count in range(10):
-        str = ser.readline().rstrip()
-        csv_out.writerow(str.split(':'))
-    ser.close()
-"""
